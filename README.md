@@ -21,9 +21,8 @@ This document is for engineers shipping or reviewing the loop, and for PMs who n
 11. [Tradeoffs](#tradeoffs)
 12. [Security, reliability, observability](#security-reliability-observability)
 13. [Prompts and LLM contract](#prompts-and-llm-contract)
-14. [Demo / Loom](#demo--loom)
-15. [Future scope](#future-scope)
-16. [Known limitations](#known-limitations)
+14. [Future scope](#future-scope)
+15. [Known limitations](#known-limitations)
 
 ---
 
@@ -513,21 +512,6 @@ JSON Schema: [`src/lib/llm/json-schemas.ts`](src/lib/llm/json-schemas.ts).
 
 Pipeline: ask for structured JSON → Zod → if invalid, one repair with validator errors → transient errors retry. Structured-output hosts that reject `json_schema` fall back to `json_object`.
 
----
-
-## Demo / Loom
-
-Keep it under 15 minutes.
-
-1. Start from the prefilled Bangalore RDS brief. Show thinking, then filters/rubric and five cards with quoted evidence.
-2. Mark one “too junior” (or type it). Show the change summary and a new shortlist.
-3. Optionally edit a chip and **Apply edits**.
-4. Failure: set `OPENAI_API_KEY` to `invalid`, restart, **Retry**. The UI errors; it does not crash. Restore the key and retry.
-5. Freeze. Walk the final filters, rubric, and ranked list.
-
-Malformed-JSON recovery cannot be forced; the invalid-key path is the reliable on-camera failure. If a repair happens naturally, the green note is the recovery moment.
-
----
 
 ## Future scope
 
